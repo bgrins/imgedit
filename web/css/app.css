@@ -18,8 +18,8 @@ html, body {margin:0px; padding:0px;}
 		display:block; height:auto; outline:0; background:white; border:1px solid;	}
 .file-container.active {z-index:10;}
 .file-container .file-title { height:20px; cursor:move;}
-.file-container .grid-y {width:20px; float:left; background: #000; }
-.file-container .grid-x {height:20px; background: #000; }
+.file-container .file-content { background: #fff  url('../images/grid-y.png') left top no-repeat; padding-left:16px; }
+.file-container .grid-x {height:16px; background: #fff url('../images/grid-x.png'); left top no-repeat; }
 .file-container .editor-container { position: relative;  border: 0; background: none; overflow: auto; zoom: 1;  width:auto; height:auto; }
 .file-container .editor-container { /*margin-left:20px; */}
 .file-container .editor { position:relative; margin: 0 auto; border: 1px solid; overflow:hidden; }
