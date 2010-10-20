@@ -1,0 +1,28 @@
+
+html, body {margin:0px; padding:0px;}
+.hidden, .hide { display: none; }
+.visuallyhidden { position: absolute !important; clip: rect(1px, 1px, 1px, 1px); }
+.invisible { visibility: hidden; }
+.clearfix:after  { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix { zoom: 1; }
+#sidebar { float:left; width:100px; }
+#layers, #controls { border:solid 1px; width:80px; }
+#workspace { position:relative;margin-left:100px; margin-right:100px;  background:#ddd; border:solid 1px #000; }
+.ui-resizable-helper { border: 2px dotted #00F; }
+.file-container { position: absolute; width: 300px; overflow: hidden; background:#ddd;
+		display:block; height:auto; outline:0; background:white; border:1px solid;	}
+.file-container.active {z-index:10;}
+.file-container .file-title { height:20px; cursor:move;}
+.file-container .grid-y {width:20px; float:left; background: #000; }
+.file-container .grid-x {height:20px; background: #000; }
+.file-container .editor-container { position: relative;  border: 0; background: none; overflow: auto; zoom: 1;  width:auto; height:auto; }
+.file-container .editor-container { }
+.file-container .editor { position:relative; margin: 0 auto; border: 1px solid; overflow:hidden; }
+.file-container .editor canvas { position:absolute; top:0; left:0;}
+.file-container .selection, .file-container .selection-helper { position:absolute; border: 1px dotted; background: transparent; }	
+.file-container .mask { position:absolute; background:transparent;}
+#sidebar ul { list-style-type: none; margin: 0; padding: 0; }
+#sidebar li { margin:5px; }
+#sidebar li.active { font-weight:bold; }
+.layer1 {z-index:1;}
+.layer2 {z-index:2;}

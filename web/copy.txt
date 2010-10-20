@@ -1,0 +1,15 @@
+
+<div id='file-mangement'>
+	<div id='new-file'>
+	You can add a file here.  We just need you to answer a couple of questions.<br />
+	Width: <input type='text' name='new-file-width' value='640' /> px
+	Height: <input type='text' name='new-file-width' value='480' /> px
+	</div>
+	<div id='existing files'>
+		
+	</div>
+</div>
+<script id="templateExistingFiles" type="text/x-jquery-tmpl">
+This should iterate over the whole list, have an 'opened' class, display meta data,
+be reorderable, etc.  Maybe even have a search box and paging
+</script>
