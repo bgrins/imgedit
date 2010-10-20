@@ -13,7 +13,6 @@ require([
 	"lib/jquery-ui-1.8.5.min",
 	"lib/fake",
 	"lib/pixastic",
-	//"lib/svgcanvas",
 	"app/app.init",
 	"app/app.clipboard",
 	"app/app.controls",
