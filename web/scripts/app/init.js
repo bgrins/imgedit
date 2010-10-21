@@ -15,7 +15,7 @@
 		var startTime = new Date().getTime();
 		
     	$("#color-picker").jPicker({window:{expandable: true, position:{x:0, y:0}}});
-        
+        log("initing");
 		app.container = $("#workspace");
 		app.filemanager = $("#file-manager");
 		app.controldispatcher.initialize();
@@ -59,5 +59,7 @@
 		
 		log("Loaded in " + (new Date().getTime() - startTime) + " ms");
 	}
+
+	return app;
 
 })();

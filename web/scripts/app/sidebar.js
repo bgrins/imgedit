@@ -1,5 +1,7 @@
 
-(function() {
+define(["app/init"], function(app) {
+log(app);
+/*
 	var app = window.app;
 	var loaded = CLOSED;
 	
@@ -19,5 +21,10 @@
 			app.filemanager.show();
 			app.container.hide();
 		}
-	}
+	}*/
+});
+
+
+
+(function() {
 })();

@@ -14,12 +14,12 @@ require([
 	"lib/fake",
 	"lib/pixastic",
 	"lib/colorpicker",
-	"app/app.init",
-	"app/app.clipboard",
-	"app/app.controls",
-	"app/app.files",
-	"app/app.images",
-	"app/app.layers",
-	"app/app.loader",
-	"app/app.sidebar"
-]);
+	"app/init",
+	"app/clipboard",
+	"app/controls",
+	"app/files",
+	"app/images",
+	"app/layers",
+	"app/loader",
+	"app/sidebar"
+], function() { log(app.initialize); $(app.initialize) });
