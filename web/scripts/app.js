@@ -19,7 +19,7 @@ require([
 	"app/app.controls",
 	"app/app.files",
 	"app/app.images",
-	"app/app.clipboard",
 	"app/app.layers",
-	"app/app.loader"
+	"app/app.loader",
+	"app/app.sidebar"
 ]);

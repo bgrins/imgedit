@@ -7,9 +7,8 @@
         
 
 	function resize() {
-	    app.container.height(
-	    	document.body.scrollHeight - app.container.offset().top
-	    );
+		var height = document.body.scrollHeight - app.container.offset().top;
+	    app.container.height(height);
 	}
 	
 	function initialize() {
@@ -18,8 +17,16 @@
     	$("#color-picker").jPicker({window:{expandable: true, position:{x:0, y:0}}});
         
 		app.container = $("#workspace");
+		app.filemanager = $("#file-manager");
 		app.controldispatcher.initialize();
 		app.load(LOADED.files);
+		
+		$("#templateFileManager").template("fileManager");
+		
+		$("a[href='#file-manager']").click(function() {
+			app.sidebar.drawFileManager();
+			return false;
+		});
 		
 		$("#modal").resizable();
 		app.resize();

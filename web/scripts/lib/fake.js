@@ -55,3 +55,17 @@ var LOADED = {
 		}
 	]
 };
+
+var CLOSED = {
+	'files': [
+		{
+		'name': 'file 3',
+		'desc': 'any details',
+		'id': '567kd'
+		},
+		{
+		'name': 'file 4',
+		'id': '3dgsx'
+		}
+	]
+};

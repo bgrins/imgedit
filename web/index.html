@@ -25,8 +25,11 @@ require({ urlArgs: "v=$$VERSION$$&bust=" + (new Date().getTime()) }, ["app"], fu
 	<div id='layers'>Layers
 		<ul id='layer-list'></ul>
 	</div>
+	<a href='#file-manager'>Manage fiels</a>
 </div>
 <div id='workspace'></div>
+<div id='file-manager'><ul></ul></div>
+
 
 
 <script id="templateLayer" type="text/x-jquery-tmpl">
@@ -34,21 +37,27 @@ require({ urlArgs: "v=$$VERSION$$&bust=" + (new Date().getTime()) }, ["app"], fu
 		<input type='checkbox' name='layer-${ind}' {{if visible}}checked="checked"{{/if}} /><strong>${name}</strong>
 	</li>
 </script>
+
 <script id='templateControl'  type="text/x-jquery-tmpl">
 	<li id="control-${id}" class="control-${id}" data-index='${ind}'>${id}</li>
 </script>
+
 <script id="templateFile" type="text/x-jquery-tmpl">
-<div class='file-container' class='clearfix'>
-	<div class='file-title ui-widget-header'>${name}</div>
-	<div class='file-content'>
-		<div class='grid-x'>&nbsp;</div>
-		<div class='editor-container'>
-		<div class='editor'>
-			
-		</div>
+	<div class='file-container' class='clearfix'>
+		<div class='file-title ui-widget-header'>${name}</div>
+		<div class='file-content'>
+			<div class='grid-x'>&nbsp;</div>
+			<div class='editor-container'>
+			<div class='editor'>
+				
+			</div>
+			</div>
 		</div>
 	</div>
-</div>
+</script>
+
+<script id="templateFileManager" type="text/x-jquery-tmpl">
+	<li>${name} - ${desc}</li>
 </script>
 
 </body>
