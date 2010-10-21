@@ -23,9 +23,13 @@
 		
 		$("#modal").resizable();
 		app.resize();
-		 
-		$(document).bind('keydown', 'Ctrl+c', app.clipboard.copy);
-		$(document).bind('keydown', 'Ctrl+v', app.clipboard.paste);
+		
+		$(window).bind('resize', app.resize); 
+		
+		// TODO: OSX should only fire these shortcuts on meta, but is there a better way to check than
+		// UA sniffing?
+		$(document).bind('keydown', 'ctrl+c meta+c', app.clipboard.copy);
+		$(document).bind('keydown', 'ctrl+v meta+v', app.clipboard.paste);
 		
 		$("#control-select").click();
 		
