@@ -4,6 +4,7 @@
 	
 	app.resize = resize;
 	app.initialize = initialize;
+        
 
 	function resize() {
 	    app.container.height(
@@ -14,6 +15,8 @@
 	function initialize() {
 		var startTime = new Date().getTime();
 		
+    	$("#color-picker").jPicker({window:{expandable: true, position:{x:0, y:0}}});
+        
 		app.container = $("#workspace");
 		app.controldispatcher.initialize();
 		app.load(LOADED.files);

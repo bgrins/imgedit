@@ -5,10 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <script src="scripts/require.js?v=$$VERSION$$"></script>
 <script type="text/javascript">
-require({ urlArgs: "v=$$VERSION$$" }, ["app"], function() { $(app.initialize); });
+require({ urlArgs: "v=$$VERSION$$&bust=" + (new Date().getTime()) }, ["app"], function() { $(app.initialize); });
 </script>
 <link rel='stylesheet' href='css/app.css' type='text/css' />
 <link rel='stylesheet' href='css/jqueryui.aristo.css' type='text/css' />
+<link rel='stylesheet' href='css/colorpicker.css' type='text/css' />
 
 <style type='text/css'>
 
@@ -16,10 +17,10 @@ require({ urlArgs: "v=$$VERSION$$" }, ["app"], function() { $(app.initialize); }
 
 </head>
 <body>
-
 <div id='sidebar'>
 	<div id='controls'>Controls
 		<ul id='control-list'></ul>
+		<div id='color-picker'>test</div>
 	</div>
 	<div id='layers'>Layers
 		<ul id='layer-list'></ul>
