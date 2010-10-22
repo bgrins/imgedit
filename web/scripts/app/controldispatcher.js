@@ -40,7 +40,7 @@ window.app.controldispatcher = (function(app) {
 				$.each(events, function(i,el) { $(app.container).unbind(el); });
 				bindControl(activeControl, "control.mousemove", "mousemove");
 				bindControl(activeControl, "control.mousedown", "mousestart");
-				bindControl(activeControl, "control.mouseup", "mouseup");
+				bindControl(activeControl, "control.mouseup", "mouseend");
 			}
 		});
 	
