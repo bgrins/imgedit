@@ -1,6 +1,6 @@
 
-app.controls.wand = (function(app) {
-	var wand = { id: 'wand' };
+(function(app) {
+	var wand = app.controls.wand = { id: 'wand' };
 	
 	wand.activate = function(e) {
 		$(app.container).css("cursor", "move");

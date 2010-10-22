@@ -1,6 +1,6 @@
 
-app.controls.rect = (function(app) {
-	var rect = { id: 'rect' };
+(function(app) {
+	var rect = app.controls.rect = { id: 'rect' };
 	
 	rect.activate = function(e) {
 	

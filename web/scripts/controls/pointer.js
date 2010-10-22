@@ -1,6 +1,7 @@
 
-app.controls.pointer = (function(app) {
-	var pointer = { id: 'pointer' };
+(function(app) {
+	
+	var pointer = app.controls.pointer = { id: 'pointer' };
 	
 	pointer.activate = function(e) {
 		$(app.container).css("cursor", "move");
@@ -17,7 +18,5 @@ app.controls.pointer = (function(app) {
 	pointer.mouseend = function(e) {
 	
 	};
-	
-	return pointer;
 	
 })(window.app);

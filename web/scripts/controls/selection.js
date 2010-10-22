@@ -1,7 +1,6 @@
 
-
-app.controls.selection = (function(app) {
-	var selection = { id: 'selection' };
+(function(app) {
+	var selection = app.controls.selection = { id: 'selection' };
 	
 	var isTracking = false;
 	var startPos = [];

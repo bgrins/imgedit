@@ -1,6 +1,6 @@
 
-app.controls.blur = (function(app) {
-	var blur = { id: 'blur' };
+(function(app) {
+	var blur = app.controls.blur = { id: 'blur' };
 	
 	blur.activate = function(e) {
 	
