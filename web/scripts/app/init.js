@@ -14,22 +14,21 @@
 		var startTime = new Date().getTime();
     	
     	$("#color-picker").jPicker({window:{expandable: true, position:{x:0, y:0}}});
-        log("initing");
-		app.container = $("#workspace");
-		app.filemanager = $("#file-manager");
-		app.controldispatcher.initialize();
+        app.container = $("#workspace");
+	
+        
 		app.load(LOADED.files);
 		
 		$("#templateFileManager").template("fileManager");
+		$("#templateControl").template("control");
 		
 		$("a[href='#file-manager']").click(function() {
-			app.sidebar.drawFileManager();
+			app.filemanager.show();
 			return false;
 		});
 		
 		$("#modal").resizable();
 		app.resize();
-		
 		$(window).bind('resize', app.resize); 
 		
 		// TODO: OSX should only fire these shortcuts on meta, but is there a better way to check than
@@ -56,9 +55,14 @@
 		
 		app.files.active[0].makeActive();
 		
-		app.sidebar.init();
+		app.filemanager.init();
+		app.controldispatcher.init();
 		
 		log("Loaded in " + (new Date().getTime() - startTime) + " ms");
+	}
+	
+	function controlActivate() {
+		
 	}
 
 	return app;

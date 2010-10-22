@@ -1,53 +1,5 @@
 
 
-app.controldispatcher = { };
-app.controldispatcher.dispatch = function(e) {
-	$(app.container).trigger("control." + e.type, [e]);
-};
-app.controldispatcher.initialize = function() {
-
-	var controls = [],
-		ind = 0,
-		events = ["control.mousemove", "control.mouseup", "control.click", "control.mousedown"],
-		activeControl = null;
-	
-	for (var i in app.controls) {
-		var control = app.controls[i];
-		control.id = i;
-		control.ind = ind++;
-		controls.push(control);
-	}
-	
-	var allControls = $("#templateControl").tmpl(controls);
-	$("#control-list").append(allControls).click(function(e) {	
-		if ($(e.target).is("li")) {
-			
-			var clickedControl = $(e.target),
-				oldActiveControl = activeControl,
-				activeControl = controls[clickedControl.attr("data-index")];
-				
-			oldActiveControl && oldActiveControl.deactivate && oldActiveControl.deactivate();
-			activeControl.activate && activeControl.activate();
-			
-			clickedControl.addClass("active").siblings().removeClass("active");
-			
-			$.each(events, function(i,el) { $(app.container).unbind(el); });
-			app.controldispatcher.bindControl(activeControl, "control.mousemove", "mousemove");
-			app.controldispatcher.bindControl(activeControl, "control.mousedown", "mousestart");
-			app.controldispatcher.bindControl(activeControl, "control.mouseup", "mouseup");
-		}
-	});
-};
-
-app.controldispatcher.bindControl = function(control, eventName, callbackName) {
-	var cb = control[callbackName];
-	cb && $(app.container).bind(eventName, function(e, oe) {
-	    var fileOffset = oe.data.file.editor.offset();
-	    oe.data.fileX = oe.pageX - fileOffset.left;
-	    oe.data.fileY = oe.pageY- fileOffset.top;
-	    cb(oe)
-	});
-};
 
 
 app.controls = { };
@@ -133,7 +85,6 @@ app.controls.blur = (function() {
 	control.activate = function() {
 	};
 	control.mousestart = function(e) {
-		log("mousestart");
 		var file = e.data.file;
 		var output = file.process('sepia');
 	};

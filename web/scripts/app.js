@@ -21,5 +21,6 @@ require([
 	"app/images",
 	"app/layers",
 	"app/loader",
-	"app/sidebar"
+	"app/controldispatcher",
+	"app/filemanager"
 ], function() { $(app.initialize) });

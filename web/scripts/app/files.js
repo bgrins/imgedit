@@ -116,7 +116,6 @@ app.files.instance = function(opts) {
 	file.orderLayers = function() {
 		var j = layers.length;
 		for (var i = 0; i < layers.length; i++) {
-			log(layers[i].name)
 			layers[i].container.css({zIndex: j--});
 		}
 	};
@@ -177,7 +176,7 @@ app.files.instance = function(opts) {
 		left: opts.position[1],
 		position: 'absolute'
 	});
-
+	
 	$(file.editor).bind("mousemove mousedown mouseup", { file: file }, app.controldispatcher.dispatch);
 	
 	return file;
