@@ -4,7 +4,6 @@
 	
 	app.resize = resize;
 	app.initialize = initialize;
-        
 
 	function resize() {
 		var height = document.body.scrollHeight - app.container.offset().top;
@@ -13,7 +12,7 @@
 	
 	function initialize() {
 		var startTime = new Date().getTime();
-		
+    	
     	$("#color-picker").jPicker({window:{expandable: true, position:{x:0, y:0}}});
         log("initing");
 		app.container = $("#workspace");
@@ -56,6 +55,8 @@
 		});
 		
 		app.files.active[0].makeActive();
+		
+		app.sidebar.init();
 		
 		log("Loaded in " + (new Date().getTime() - startTime) + " ms");
 	}

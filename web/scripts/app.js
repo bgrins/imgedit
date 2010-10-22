@@ -22,4 +22,4 @@ require([
 	"app/layers",
 	"app/loader",
 	"app/sidebar"
-], function() { log(app.initialize); $(app.initialize) });
+], function() { $(app.initialize) });
