@@ -16,29 +16,25 @@ window.app.controldispatcher = (function(app) {
 	
 	function bindControls() {
 					
-		$("#control-list").click(function(e) {	
-			if ($(e.target).is("li")) {
-				
-				var clickedControl = $(e.target),
-					oldActiveControl = activeControl,
-					newActiveControl = controls[clickedControl.attr("data-index")],
-					shouldActivate = true;
-				
-				
-				if (oldActiveControl && oldActiveControl.deactivate) {
-					oldActiveControl.deactivate();
-				} 
-				if (newActiveControl.activate) {
-					newActiveControl.activate();
-				} 
-				
-				// TODO: allow a control to return false on activate to prevent
-				// from becoming active
-				if (shouldActivate) {
-					activeControl = newActiveControl;
-					clickedControl.addClass("active").siblings().removeClass("active");
-				}
-				
+		$("#control-list").delegate("li", "click", function(e) {	
+			var clickedControl = $(e.target),
+			    oldActiveControl = activeControl,
+			    newActiveControl = controls[clickedControl.attr("data-index")],
+			    shouldActivate = true;
+			
+			
+			if (oldActiveControl && oldActiveControl.deactivate) {
+			    oldActiveControl.deactivate();
+			} 
+			if (newActiveControl.activate) {
+			    newActiveControl.activate();
+			} 
+			
+			// TODO: allow a control to return false on activate to prevent
+			// from becoming active
+			if (shouldActivate) {
+			    activeControl = newActiveControl;
+			    clickedControl.addClass("active").siblings().removeClass("active");
 			}
 		});
 	
