@@ -1,13 +1,15 @@
-/* If app has not been defined, create an object for it,
-but unless if app.run exists, we will not run the scripts.
 
-This allows us to pull down the js for the app 
+/* Author: Brian Grinstead
+App are implemented using a variety of techniques
+Controls are implemented using the module pattern
+Obj are implemented using simple inheritance
 */
 
 window.app = { controls: { }, obj: { } };
 require([
 	"lib/common", 
 	"lib/util", 
+	"lib/backbone",
 	"lib/jquery.tmpl",
 	"lib/jquery.hotkeys",
 	"lib/jquery-ui-1.8.5.min",
@@ -16,6 +18,7 @@ require([
 	"lib/colorpicker",
 	"app/init",
 	"app/clipboard",
+	"app/f",
 	"app/file",
 	"app/files",
 	"app/images",

@@ -2,53 +2,58 @@
 window.app.controldispatcher = (function(app) {
 
 	var controls = [];
+	var activeControl;
+	var eventMap = { 
+		'mousemove': 'mousemove',
+		'mousedown': 'mousestart',
+		'mouseup': 'mouseend'
+	};
 	
 	function drawControls() {
 		var allControls = $.tmpl("control", controls);
 		$("#control-list").append(allControls);
 	}
-	function dispatchControl(e) {
-		$(app.container).trigger("control." + e.type, [e]);
-	}
-	function bindControl(control, eventName, callbackName) {
-		var cb = control[callbackName];
-		cb && $(app.container).bind(eventName, function(e, oe) {
-		    var fileOffset = oe.data.file.editor.offset();
-		    oe.data.fileX = oe.pageX - fileOffset.left;
-		    oe.data.fileY = oe.pageY- fileOffset.top;
-		    cb(oe)
-		});
-	}
 	
 	function bindControls() {
-	
-		var events = ["control.mousemove", "control.mouseup", "control.click", "control.mousedown"],
-			activeControl = null;
-		
+					
 		$("#control-list").click(function(e) {	
 			if ($(e.target).is("li")) {
 				
 				var clickedControl = $(e.target),
 					oldActiveControl = activeControl,
-					activeControl = controls[clickedControl.attr("data-index")];
-					
-				oldActiveControl && oldActiveControl.deactivate && oldActiveControl.deactivate();
-				activeControl.activate && activeControl.activate();
+					newActiveControl = controls[clickedControl.attr("data-index")],
+					shouldActivate = true;
 				
-				clickedControl.addClass("active").siblings().removeClass("active");
 				
-				$.each(events, function(i,el) { $(app.container).unbind(el); });
-				bindControl(activeControl, "control.mousemove", "mousemove");
-				bindControl(activeControl, "control.mousedown", "mousestart");
-				bindControl(activeControl, "control.mouseup", "mouseend");
+				if (oldActiveControl && oldActiveControl.deactivate) {
+					oldActiveControl.deactivate();
+				} 
+				if (newActiveControl.activate) {
+					newActiveControl.activate();
+				} 
+				
+				// TODO: allow a control to return false on activate to prevent
+				// from becoming active
+				if (shouldActivate) {
+					activeControl = newActiveControl;
+					clickedControl.addClass("active").siblings().removeClass("active");
+				}
+				
 			}
 		});
 	
 	}
 		
 	function dispatch(e) {
-		$(app.container).trigger("control." + e.type, [e]);
-	};
+		var mappedCallback = eventMap[e.type];
+		if (activeControl && activeControl[mappedCallback]) {
+		    var fileOffset = e.data.file.editor.offset();
+		    e.data.fileX = e.pageX - fileOffset.left;
+		    e.data.fileY = e.pageY- fileOffset.top;
+		    
+		    activeControl[mappedCallback](e);
+		}
+	}
 
 	function init() {
 		var ind = 0;
