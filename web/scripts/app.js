@@ -4,7 +4,7 @@ but unless if app.run exists, we will not run the scripts.
 This allows us to pull down the js for the app 
 */
 
-window.app = { controls: { } };
+window.app = { controls: { }, obj: { } };
 require([
 	"lib/common", 
 	"lib/util", 
@@ -16,6 +16,7 @@ require([
 	"lib/colorpicker",
 	"app/init",
 	"app/clipboard",
+	"app/file",
 	"app/files",
 	"app/images",
 	"app/layers",
@@ -27,4 +28,7 @@ require([
 	"controls/rect",
 	"controls/selection",
 	"controls/wand",
+	"obj/base",
+	"obj/image",
+	"obj/rectangle"
 ], function() { $(app.initialize) });

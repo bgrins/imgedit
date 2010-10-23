@@ -180,7 +180,6 @@ app.files.instance = function(opts) {
 	$(file.editor).bind("mousemove mousedown mouseup", { file: file }, app.controldispatcher.dispatch);
 	
 	return file;
-
 };
 
 })();

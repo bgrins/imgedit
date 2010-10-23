@@ -11,8 +11,8 @@
 	rect.mousemove = function(e) {
 	
 	};
-	rect.mousestart = function(e) {
-	
+	rect.mousestart = function(e, file) {
+		
 	};
 	rect.mouseend = function(e) {
 	
