@@ -20,6 +20,5 @@
 	
 	};
 	
-	return blur;
 })(window.app);
 

@@ -51,6 +51,4 @@
 	
 	};
 	
-	return selection;
-	
 })(window.app);

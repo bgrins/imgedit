@@ -18,6 +18,4 @@
 	
 	};
 	
-	return wand;
-	
 })(window.app);

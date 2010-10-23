@@ -18,5 +18,4 @@
 	
 	};
 	
-	return rect;
 })(window.app);
