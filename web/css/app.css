@@ -34,3 +34,6 @@ html, body {margin:0px; padding:0px;}
 
 .layer1 {z-index:1;}
 .layer2 {z-index:2;}
+
+.file-container .editor.selection-addto { cursor: n-resize; }
+.file-container .editor.selection-removefrom { cursor: s-resize; }

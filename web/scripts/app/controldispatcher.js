@@ -6,6 +6,8 @@ window.app.controldispatcher = (function(app) {
 	var eventMap = { 
 		'mousemove': 'mousemove',
 		'mousedown': 'mousestart',
+		'keydown': 'keydown',
+		'keyup': 'keyup',
 		'mouseup': 'mouseend'
 	};
 	
@@ -42,7 +44,15 @@ window.app.controldispatcher = (function(app) {
 		
 	function dispatch(e) {
 		var mappedCallback = eventMap[e.type];
-		if (activeControl && activeControl[mappedCallback]) {
+		
+		if (!e.data) {
+			e.data = { };
+		}
+		if (!e.data.file) {
+			e.data.file = app.files.current;
+		}
+		
+		if (e.data.file && activeControl && activeControl[mappedCallback]) {
 		    var fileOffset = e.data.file.editor.offset();
 		    e.data.fileX = e.pageX - fileOffset.left;
 		    e.data.fileY = e.pageY- fileOffset.top;

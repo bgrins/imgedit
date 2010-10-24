@@ -35,7 +35,7 @@
 		// UA sniffing?
 		$(document).bind('keydown', 'ctrl+c meta+c', app.clipboard.copy);
 		$(document).bind('keydown', 'ctrl+v meta+v', app.clipboard.paste);
-		
+		$(document).bind('keydown keyup', app.controldispatcher.dispatch);
 		
 		
 		$("#layer-list").click(function(e) {	
@@ -52,7 +52,7 @@
 		    }	
 		});
 		
-		app.files.active[0].makeActive();
+		app.files.setActive(app.files.active[0]);
 		
 		app.filemanager.init();
 		app.controldispatcher.init();

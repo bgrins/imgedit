@@ -129,13 +129,10 @@ app.file = function(opts) {
 		
 		layers = newLayers;
 		file.orderLayers();
-		file.makeActive();
+		file.drawLayers();
 	};
 	
-	file.makeActive = function() {
-		app.files.current && app.files.current.container.removeClass("active");
-		app.files.current = file;
-		container.addClass("active");
+	file.drawLayers = function() {
 		var allLayers = $("#templateLayer").tmpl(layers);
 		$("#layer-list").empty().append(allLayers).sortable({
 			update: function(e, ui) {
@@ -145,6 +142,11 @@ app.file = function(opts) {
 				
 			}
 		});
+	};
+	
+	file.makeActive = function() {
+		app.files.setActive(file);
+		
 	};
 	
 	file.editor.width(width).height(height);
@@ -164,7 +166,7 @@ app.file = function(opts) {
 	});
 	
 	file.container.find(".file-title").mousedown(function() {
-		file.makeActive();
+		app.files.setActive(file);
 	});
 	
 	// position is set to relative by resizable, we need it to be absolute
@@ -173,8 +175,6 @@ app.file = function(opts) {
 		left: opts.position[1],
 		position: 'absolute'
 	});
-	
-	$(file.editor).bind("mousemove mousedown mouseup", { file: file }, app.controldispatcher.dispatch);
 	
 	return file;
 };

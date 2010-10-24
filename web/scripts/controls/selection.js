@@ -11,7 +11,11 @@ var isTracking = false,
 	startPos = [],
 	endPos = [],
 	currentMask,
-	currentContext;
+	currentContext,
+	MODE_NORMAL = 0,
+	MODE_ADD = 1,
+	MODE_REMOVE = 2,
+	mode;
 	
 function selectionToContext(selection, context) {
     // will copy this is if there is an existing selection when mouse starts
@@ -45,6 +49,23 @@ selection.activate = function(e) {
 selection.deactivate = function(e) {
 
 };
+
+selection.keydown = function(e) {
+	if (e.altKey) {
+		mode = MODE_ADD;
+		e.data.file.editor.addClass("selection-addto");
+	}
+	else if (e.metaKey) {
+		mode = MODE_REMOVE;
+		e.data.file.editor.hide().addClass("selection-removefrom").hide().show();
+	}
+};
+
+selection.keyup = function(e) {
+	mode = MODE_NORMAL;
+	e.data.file.editor.removeClass("selection-removefrom selection-addto");
+};
+
 selection.mousemove = function(e) {
     if (isTracking) {
     	// need to take into account holding alt/ctrl to modify selection
@@ -94,7 +115,7 @@ selection.mouseend = function(e) {
     file.setSelection(selection);
     
     // todo: need to get rid of call to addSelection, and instead have file
-    // handle the logic of calling things like pixastic using the selection()
+    // handle the logic of Êcalling things like pixastic using the selection()
     // array. 
     if (startPos != endPos) {
     	e.data.file.addSelection(startPos, endPos);
