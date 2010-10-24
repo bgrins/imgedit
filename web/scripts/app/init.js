@@ -36,7 +36,6 @@
 		$(document).bind('keydown', 'ctrl+c meta+c', app.clipboard.copy);
 		$(document).bind('keydown', 'ctrl+v meta+v', app.clipboard.paste);
 		
-		$("#control-select").click();
 		
 		
 		$("#layer-list").click(function(e) {	
@@ -57,12 +56,9 @@
 		
 		app.filemanager.init();
 		app.controldispatcher.init();
+		$("#control-selection").click();
 		
 		log("Loaded in " + (new Date().getTime() - startTime) + " ms");
-	}
-	
-	function controlActivate() {
-		
 	}
 
 	return app;

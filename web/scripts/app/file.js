@@ -7,13 +7,16 @@ app.file = function(opts) {
 	file.opts = opts;
 	file.name = opts.name;
 	
-	var layers = file.layers = [];
-	var mask = $("<div class='mask'></div>");
 	var container = file.container = $(app.files.template).tmpl([opts]);
 	var editor = file.editor = file.container.find(".editor");
 	var selection = file.selection = [];
 	var width = file.width = opts.size[0];
 	var height = file.height = opts.size[1];
+	
+	var layers = file.layers = [];
+	var mask = $("<canvas class='mask'></canvas>").appendTo(editor);
+	var maskContext = mask[0].getContext("2d");
+	
 	
 	file.scroller = file.container.find('.editor-container');
 	
@@ -27,14 +30,23 @@ app.file = function(opts) {
 	file.removeLayer = function() {
 	
 	};
-	file.addMask = function() {
-		mask.width(editor.width()).height(editor.height());
-		editor.append(mask)
+	file.getMask = function() {
+		mask.attr({width: editor.width(), height: editor.height()});
+		return mask;
 	};
 	file.eachPx = function(cb) {
 	};
 	file.removeMask = function() {
 		mask.remove();
+	};
+	file.getSelection = function() {
+		return selection;
+	};
+	file.setSelection = function(sel) {
+		selection = sel;
+	};
+	file.clearSelection = function() {
+	
 	};
 	file.addSelection = function(startPos, endPos) {
 		var startX = Math.min(startPos[0], endPos[0]),
@@ -49,9 +61,9 @@ app.file = function(opts) {
 		selection = [[startX, startY], [endX, endY]];
 		
 		file.getSelectedCanvas();
-		
-		var sel = $("<div class='selection'></div>").css({ top: top, left: left }).width(width).height(height);
-		file.editor.append(sel);
+		maskContext.strokeRect(left, top, width, height);
+		//var sel = $("<div class='selection'></div>").css({ top: top, left: left }).width(width).height(height);
+		//file.editor.append(sel);
 	};
 	
 	file.getSelectedCanvas = function() {
